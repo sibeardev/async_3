@@ -20,9 +20,7 @@ async def create_archive_in_chunks(folder_path, chunk_kb_size=500):
     )
 
     try:
-        while True:
-            if process.stdout.at_eof():
-                break
+        while process.stdout.at_eof():
             chunk = await process.stdout.read(chunk_size)
             logger.debug("Sending archive chunk ...")
             yield chunk
