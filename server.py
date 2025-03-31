@@ -35,7 +35,7 @@ async def create_archive_in_chunks(folder_path, chunk_kb_size=500):
 
 
 async def archive(request, delay, photos_dir):
-    archive_hash = request.match_info.get("archive_hash", "")
+    archive_hash = request.match_info.get["archive_hash"]
     folder_path = f"{photos_dir}/{archive_hash}/"
     if not os.path.exists(folder_path):
         logger.error(f"Directory not found: {folder_path}")
